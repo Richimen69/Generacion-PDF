@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import GenerarPDF from './components/GenerarPDF.jsx';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [verPDF, setverPDF] = useState(false)
+  const Menu = () => {
+    return (
+      <nav>
+        <Button onClick={() => {
+          setverPDF(!verPDF)
+        }}>Ver PDF</Button>
 
-export default App;
+        <PDFDownloadLink document={<GenerarPDF />} fileName='Reporte.pdf'>
+          <Button>Descargar</Button>
+        </PDFDownloadLink>
+      </nav>
+    );
+  };
+  return (
+    <div style={{ width: "100%" }}>
+      <Menu />
+      {verPDF ?
+        <PDFViewer style={{ width: "100%", height: "90vh" }}>
+          <GenerarPDF />
+        </PDFViewer>
+        : null}
+    </div>
+  )
+}
+export default App
