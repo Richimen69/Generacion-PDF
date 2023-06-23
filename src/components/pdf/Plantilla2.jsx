@@ -39,6 +39,15 @@ const styles = StyleSheet.create({
         fontSize: '10',
         fontWeight: 'bold',
     },
+    Cell: {
+        marginTop: -1,
+        marginRight: -1,
+        width: '100%',
+        borderStyle: 'solid',
+        padding: 2,
+        borderWidth: 1,
+        borderColor: 'black'
+    },
     encabezado: {
         backgroundColor: '#ddd9c3',
     },
@@ -123,6 +132,17 @@ const cuerpo = () => {
                             <Text style={styles.fuente}></Text>
                         </View>
                     </View>
+                    <View style={styles.tableRow}>
+                    <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '86.6%', padding: 1 }}>
+                        <Text style={styles.fuente}></Text>
+                    </View>
+                    <View style={{ ...styles.Cell, ...styles.encabezado, ...styles.enc, width: '32%' }}>
+                        <Text style={styles.fuente}>Estudiantes atendidos en el semestre</Text>
+                    </View>
+                    <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '112%' }}>
+                        <Text style={styles.fuente}></Text>
+                    </View>
+                </View>
                     <View style={styles.tableRow}>
                         <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '150%' }}>
                             <Text style={styles.fuente}>PROGRAMA EDUCATIVO</Text>
