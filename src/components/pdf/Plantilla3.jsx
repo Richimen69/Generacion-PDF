@@ -13,12 +13,13 @@ const styles = StyleSheet.create({
         display: 'table',
         width: '90%',
         borderStyle: 'solid',
-        borderWidth: 1, 
+        borderWidth: 1,
         borderColor: 'black',
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop: 'auto',
         marginBottom: 'auto',
+        maxHeight: '90%'
     },
     tableRow: {
         flexDirection: 'row',
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
         marginRight: -1,
         width: '100%',
         borderStyle: 'solid',
-        padding: 3,
+        padding: 2,
         borderWidth: 1,
         borderColor: 'black'
     },
@@ -48,11 +49,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     encabezado: {
-        backgroundColor: '#ddd9c3',
+        backgroundColor: '#eeece1',
     },
     enc: {
-        justifyContent: 'center', 
-        alignItems: 'center', 
+        justifyContent: 'center',
+        alignItems: 'center',
         textAlign: 'center',
     },
     cuerpo: {
@@ -70,7 +71,7 @@ const encabezado = () => {
         <View>
             <View style={styles.tableRow}>
                 <View style={{ ...styles.tableCell, backgroundColor: 'black' }}>
-                    <Text style={{ ...styles.fuente, textAlign: 'center', color: 'white', fontWeight: 'bold' }}>REPORTE SEMESTRAL DEL COORDINADOR INSTITUCIONAL DE TUTORÍA</Text>
+                    <Text style={{ ...styles.fuente, textAlign: 'center', color: 'white', fontWeight: 'bold' }}>REPORTE SEMESTRAL DEL TUTOR</Text>
                 </View>
             </View>
             <View style={styles.tableRow}>
@@ -80,18 +81,21 @@ const encabezado = () => {
             </View>
             <View style={styles.tableRow}>
                 <View style={{ ...styles.tableCell, ...styles.encabezado }}>
-                    <Text style={styles.fuente}>Nombre del Coordinador Institucional de Tutoría: </Text>
+                    <Text style={styles.fuente}>Nombre del Tutor: </Text>
                 </View>
                 <View style={{ ...styles.tableCell, ...styles.encabezado, width: '65.3%' }}>
                     <Text style={styles.fuente}>Fecha:</Text>
                 </View>
             </View>
             <View style={styles.tableRow}>
-                <View style={{ ...styles.tableCell, ...styles.encabezado }}>
-                    <Text style={styles.fuente}>Matrícula del Instituto Tecnológico actual:</Text>
+                <View style={{ ...styles.tableCell, ...styles.encabezado, width: '62%' }}>
+                    <Text style={styles.fuente}>Programa educativo: </Text>
                 </View>
-                <View style={{ ...styles.tableCell, ...styles.encabezado, width: '65.3%' }}>
-                    <Text style={styles.fuente}></Text>
+                <View style={{ ...styles.tableCell, ...styles.encabezado, width: '38%' }}>
+                    <Text style={styles.fuente}>Grupo: </Text>
+                </View>
+                <View style={{ ...styles.tableCell, ...styles.encabezado, width: '65.1%' }}>
+                    <Text style={styles.fuente}>Hora:</Text>
                 </View>
             </View>
             <View style={styles.tableRow}>
@@ -106,11 +110,8 @@ const encabezado = () => {
                 </View>
             </View>
             <View style={styles.tableRow}>
-                <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '150%' }}>
-                    <Text style={styles.fuente}>PROGRAMA EDUCATIVO</Text>
-                </View>
-                <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '33%' }}>
-                    <Text style={styles.fuente}>Cantidad de Tutores</Text>
+                <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '182.5%' }}>
+                    <Text style={styles.fuente}>Lista de estudiantes</Text>
                 </View>
                 <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '35%' }}>
                     <Text style={styles.fuente}>Tutoría Grupal</Text>
@@ -121,11 +122,8 @@ const encabezado = () => {
                 <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '45%' }}>
                     <Text style={styles.fuente}>Estudiantes canalizados en el semestre</Text>
                 </View>
-                <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '142%' }}>
+                <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '191.5%' }}>
                     <Text style={styles.fuente}>Área canalizada</Text>
-                </View>
-                <View style={{ ...styles.tableCell, ...styles.encabezado, ...styles.enc, width: '50%' }}>
-                    <Text style={styles.fuente}>Matrícula</Text>
                 </View>
             </View>
         </View>
@@ -135,14 +133,11 @@ const cuerpo = () => {
     const repetirBloque = () => {
         const bloques = []; // Array para almacenar los bloques generados
 
-        for (let i = 0; i < 12; i++) {
+        for (let i = 1; i < 19; i++) {
             bloques.push(
                 <View style={styles.tableRow} key={i}>
-                    <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '150%' }}>
-                        <Text style={styles.fuente}>.</Text>
-                    </View>
-                    <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '33%' }}>
-                        <Text style={styles.fuente}></Text>
+                    <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '182.5%' }}>
+                        <Text style={{ ...styles.fuente, marginLeft: '3%' }}>{i}</Text>
                     </View>
                     <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '35%' }}>
                         <Text style={styles.fuente}></Text>
@@ -153,10 +148,7 @@ const cuerpo = () => {
                     <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '45%' }}>
                         <Text style={styles.fuente}></Text>
                     </View>
-                    <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '142%' }}>
-                        <Text style={styles.fuente}></Text>
-                    </View>
-                    <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '50%' }}>
+                    <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '191.5%%' }}>
                         <Text style={styles.fuente}></Text>
                     </View>
                 </View>
@@ -175,11 +167,11 @@ const cuerpo = () => {
         </Page>
     );
 }
-const Plantilla = () => {
+const Plantilla3 = () => {
     return (
         cuerpo()
     );
 }
 
 
-export default Plantilla
+export default Plantilla3

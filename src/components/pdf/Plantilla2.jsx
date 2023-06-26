@@ -187,7 +187,7 @@ const cuerpo = () => {
                         ______________________________                                                              ______________________________
                     </Text>
                     <Text style={{...styles.fuente}}>
-                            Nombre y firma del Coordinador                                                                    Nombre y firma del Jefe del Departamento
+                    Nombre y firma del Coordinador                                                                    Nombre y firma del Jefe del Departamento
                     </Text>
                     <Text style={{...styles.fuente}}>
                     Institucional de Tutoría                                                                                   de Desarrollo Académico
