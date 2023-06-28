@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
     table: {
         display: 'table',
-        width: '90%',
+        width: '100%',
         borderStyle: 'solid',
         borderWidth: 1, 
         borderColor: 'black',
@@ -131,11 +131,13 @@ const encabezado = () => {
         </View>
     )
 }
-const cuerpo = () => {
-    const repetirBloque = () => {
-        const bloques = []; // Array para almacenar los bloques generados
 
-        for (let i = 0; i < 12; i++) {
+const cuerpo = () => {
+    let i
+    const bloques = [];
+    const repetirBloque = () => {
+        // Array para almacenar los bloques generados
+        for (i = 1; i < 39; i++) {
             bloques.push(
                 <View style={styles.tableRow} key={i}>
                     <View style={{ ...styles.tableCell, ...styles.cuerpo, width: '150%' }}>
@@ -163,16 +165,63 @@ const cuerpo = () => {
             );
         }
 
-        return bloques; // Devuelve el array de bloques generados
+        return (
+            (() => {
+                const pages = [];
+                const bloquesLength = bloques.length;
+                const bloquesPorPagina = 12;
+
+                for (let a = 0; a < bloquesLength; a += bloquesPorPagina) {
+                    const finalBloque = Math.min(a + bloquesPorPagina, bloquesLength);
+                    const isUltimoBloque = finalBloque === bloquesLength;
+
+                    pages.push(
+                        <Page size="A4" orientation="landscape" key={a}>
+                            <View style={styles.contenido}>
+                                <View style={styles.table}>
+                                    {encabezado()}
+                                    {bloques.slice(a, finalBloque)}
+                                    {isUltimoBloque && (
+                                        <View style={styles.tableRow}>
+                                            <View style={{ ...styles.tableCell, ...styles.cuerpo, ...styles.enc, width: '62.7%' }}>
+                                                <Text style={styles.fuente}>Observaciones</Text>
+                                            </View>
+                                            <View style={{ ...styles.tableCell, ...styles.cuerpo, ...styles.enc, width: '140%' }}>
+                                                <Text style={styles.fuente}></Text>
+                                            </View>
+                                        </View>
+                                    )}
+                                </View>
+                                {isUltimoBloque && (
+                                    <View>
+                                        <Text style={styles.fuente}>
+                                            Nota: 1. Anotar y reportar solo los programas que se ofrecen en el Instituto Tecnológico.
+                                        </Text>
+                                        <Text style={{ ...styles.fuente, paddingLeft: '3.5%' }}> 2.- Este reporte deberá ser entregado al Jefe del Departamento de Desarrollo Académico con copia para el Subdirector Académico y con copia para el Coordinador Institucional de Tutoría.</Text>
+                                        <Text style={{...styles.fuente, textAlign:'center',marginTop:'5%'}}>
+                                            ____________________________________                                                 ____________________________________
+                                        </Text>
+                                        <Text style={{ ...styles.fuente, textAlign:'center'}}>
+                                            Nombre y firma del Coordinador                                                                    Nombre y firma del Jefe del Departamento
+                                        </Text>
+                                        <Text style={{ ...styles.fuente, textAlign:'center', marginLeft:-20}}>
+                                            Institucional de Tutoría                                                                                   de Desarrollo Académico
+                                        </Text>
+                                    </View>
+                                )}
+                            </View>
+                        </Page>
+                    );
+                }
+
+                return pages;
+            })()
+
+        );
     }
 
     return (
-        <Page size="A4" orientation="landscape">
-            <View style={styles.table}>
-                {encabezado()}
-                {repetirBloque()}
-            </View>
-        </Page>
+        repetirBloque()
     );
 }
 const Plantilla = () => {
